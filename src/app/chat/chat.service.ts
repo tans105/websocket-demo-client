@@ -4,7 +4,7 @@ import { ChatComponent } from "./chat.component";
 import { ChatMessage } from "../model/chat.message";
 
 export class ChatService {
-    webSocketEndPoint: string = 'http://localhost:8080/ws';
+    webSocketEndPoint: string = 'https://pure-gorge-41603.herokuapp.com/ws';
     topic: string = "/topic/public";
     stompClient: any;
     appComponent: ChatComponent;
