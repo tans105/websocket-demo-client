@@ -35,7 +35,10 @@ export class ChatComponent implements OnInit {
     }
 
     handleMessage(message: ChatMessage) {
-        this.msgs.push(message);
+        if (message.sender === this.currentUser && message.type === Constants.JOIN) {
+        } else {
+            this.msgs.push(message);
+        }
     }
 
     ngAfterViewChecked() {
@@ -43,16 +46,19 @@ export class ChatComponent implements OnInit {
     }
 
     scrollToBottom(): void {
-      try {
-        this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
-      } catch (e) {
+        try {
+            this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+        } catch (e) {
 
-      }
+        }
     }
 
     enableChat(currentUser) {
         this.currentUser = currentUser;
         this.canTalk = true;
-        this.connect(new ChatMessage(this.conversation, false, this.currentUser, new Date(), Constants.JOIN));
+        let msg = new ChatMessage(this.conversation, false, this.currentUser, new Date(), Constants.JOIN);
+        this.connect(msg);
+        this.msgs.push(msg)
+
     }
 }

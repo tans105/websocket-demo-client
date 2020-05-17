@@ -16,7 +16,7 @@ export class ChatService {
     connect(joinMessage) {
         let ws = new SockJS(this.webSocketEndPoint);
         this.stompClient = Stomp.over(ws);
-        // this.stompClient.debug = null; // Disable the logs
+        this.stompClient.debug = null; // Disable the logs
         const _this = this;
         _this.stompClient.connect({}, function (frame) {
             _this.send(joinMessage);
