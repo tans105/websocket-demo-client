@@ -2,7 +2,7 @@
   "name": "angular8-springboot-websocket",
   "version": "0.0.0",
   "scripts": {
-    "ng": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng",
+    "ng": "node server.js",
     "start": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng serve",
     "build": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build",
     "test": "ng test",
@@ -48,5 +48,9 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.10.1",
     "tslint": "~6.1.2"
+  },
+  "engines": {
+    "node": "~10.16.3",
+    "npm": "~6.9.0"
   }
 }
