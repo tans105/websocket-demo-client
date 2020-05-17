@@ -2,9 +2,9 @@
   "name": "angular8-springboot-websocket",
   "version": "0.0.0",
   "scripts": {
-    "ng": "node server.js",
-    "start": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng serve",
-    "build": "node --max_old_space_size=8000 ./node_modules/@angular/cli/bin/ng build",
+    "ng": "ng",
+    "start": "node server.js",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
