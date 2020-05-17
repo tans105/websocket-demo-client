@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChatService } from "./chat.service";
 import { ChatMessage } from "../model/chat.message";
+import { Constants } from "../app.constants";
 
 @Component({
     selector: 'app-chat',
@@ -13,14 +14,15 @@ export class ChatComponent implements OnInit {
     chatService: ChatService;
     msgs = [];
     conversation: string;
+    canTalk = false;
+    currentUser: string;
 
     ngOnInit() {
         this.chatService = new ChatService(this);
-        this.connect();
     }
 
-    connect() {
-        this.chatService.connect();
+    connect(joinMessage) {
+        this.chatService.connect(joinMessage);
     }
 
     disconnect() {
@@ -28,7 +30,8 @@ export class ChatComponent implements OnInit {
     }
 
     sendMessage() {
-        this.chatService.send(new ChatMessage(this.conversation, false, "DemoUser", new Date(), 'CHAT'));
+        this.chatService.send(new ChatMessage(this.conversation, false, this.currentUser, new Date(), Constants.CHAT));
+        this.conversation = '';
     }
 
     handleMessage(message: ChatMessage) {
@@ -40,6 +43,16 @@ export class ChatComponent implements OnInit {
     }
 
     scrollToBottom(): void {
+      try {
         this.myScrollContainer.nativeElement.scrollTop = this.myScrollContainer.nativeElement.scrollHeight;
+      } catch (e) {
+
+      }
+    }
+
+    enableChat(currentUser) {
+        this.currentUser = currentUser;
+        this.canTalk = true;
+        this.connect(new ChatMessage(this.conversation, false, this.currentUser, new Date(), Constants.JOIN));
     }
 }

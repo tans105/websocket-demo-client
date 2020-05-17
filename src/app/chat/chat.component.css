@@ -15,24 +15,43 @@
 }
 
 .chatBox li span {
-    font-weight: 600;
     color: #000000;
 }
 
 .chatBox .me {
+    font-weight: 500;
     min-height: 20px;
-    float:right;
+    float: right;
     clear: both;
     background-color: #34a1ef;
     border-radius: 10px 2px 2px 10px;
     opacity: 0.6;
 }
 
-.chatBox .him {
+.chatBox .join {
+    font-style: italic;
     min-height: 20px;
-    float:left;
+    text-align: center;
+    clear: both;
+}
+
+.chatBox .him {
+    font-weight: 500;
+    min-height: 20px;
+    float: left;
     clear: both;
     background-color: #ddd;
     border-radius: 2px 10px 10px 2px;
     opacity: 0.6;
 }
+
+.user-input {
+    margin-top: 50%;
+}
+
+.user-input input {
+    text-align: center;
+}
+
+
+

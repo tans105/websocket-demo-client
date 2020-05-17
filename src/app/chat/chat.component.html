@@ -1,29 +1,43 @@
 <h2 style="text-align: center">Lets Talk! </h2>
 
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-12 chat-screen-box" #chatArea>
-                <div class="my-3" *ngFor="let msg of msgs">
-                    <ul class="chatBox">
-                        <li class="him"><span>{{msg._content}}</span></li>
-                        <li class="me"><span>{{msg._content}}</span></li>
-                    </ul>
+    <div *ngIf="canTalk">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-12 chat-screen-box" #chatArea>
+                    <div class="my-3" *ngFor="let msg of msgs">
+                        <ul class="chatBox">
+                            <li *ngIf="msg._type == 'CHAT'" [ngClass]="{'me': msg._sender === currentUser, 'him':msg._sender !== currentUser }">
+                                <span>{{msg._content}}</span>
+                            </li>
+                            <li *ngIf="msg._type=='JOIN'" class="join"><span style="color: darkgrey">{{msg._sender}} joined</span></li>
+                            <li *ngIf="msg._type=='LEAVE'" class="join"><span style="color: darkgrey">{{msg._sender}} left</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <form>
+            <div class="form-row align-items-center">
+                <div class="col-xs-11 col-md-11 col-sm-11 my-1">
+                    <input type="text" [(ngModel)]="conversation" class="form-control w-100" name="conversation"
+                           id="conversation">
+                </div>
+                <div class="col-xs-1 col-md-1 col-sm-1 my-1">
+                    <button (keydown.enter)="sendMessage()" (click)="sendMessage()" class="btn btn-dark" type="button">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
-    <form>
-        <div class="form-row align-items-center">
-            <div class="col-xs-11 col-md-11 col-sm-11 my-1">
-                <input type="text" [(ngModel)]="conversation" class="form-control w-100" name="conversation"
-                       id="conversation">
+    <div *ngIf="!canTalk">
+        <form>
+            <div class="form-group user-input">
+                <input (keydown.enter)="enableChat($event.target.value)" type="text" class="form-control"
+                       aria-describedby="emailHelp" placeholder="Who are you ?">
             </div>
-            <div class="col-xs-1 col-md-1 col-sm-1 my-1">
-                <button (click)="sendMessage()" class="btn btn-dark" type="button">Send</button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 

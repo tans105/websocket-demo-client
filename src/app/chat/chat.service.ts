@@ -13,12 +13,13 @@ export class ChatService {
         this.appComponent = appComponent;
     }
 
-    connect() {
+    connect(joinMessage) {
         let ws = new SockJS(this.webSocketEndPoint);
         this.stompClient = Stomp.over(ws);
-        this.stompClient.debug = null; // Disable the logs
+        // this.stompClient.debug = null; // Disable the logs
         const _this = this;
         _this.stompClient.connect({}, function (frame) {
+            _this.send(joinMessage);
             _this.stompClient.subscribe(_this.topic, function (sdkEvent) {
                 _this.onMessageReceived(sdkEvent);
             });
@@ -34,16 +35,21 @@ export class ChatService {
     errorCallBack(error) {
         console.log("errorCallBack -> " + error);
         setTimeout(() => {
-            this.connect();
+            this.connect(new ChatMessage('', false, this.appComponent.currentUser, new Date(), 'JOIN'));
         }, 5000);
     }
 
     send(message: ChatMessage) {
-        this.stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(message));
+        if (message.type == 'CHAT') {
+            this.stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(message));
+        } else {
+            this.stompClient.send("/app/chat.addUser", {}, JSON.stringify(message));
+        }
     }
 
     onMessageReceived(message) {
         let chatMessage = new ChatMessage(message.body, true);
         this.appComponent.handleMessage(chatMessage);
+
     }
 }
