@@ -1,0 +1,9 @@
+
+.user-input {
+    position: relative;
+    top: 200px;
+}
+
+.user-input input {
+    text-align: center;
+}

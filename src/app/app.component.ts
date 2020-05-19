@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    canTalk = false;
+    currentUser: string;
 
+    enableChat(user) {
+        this.currentUser = user;
+        this.canTalk = true;
+    }
 }

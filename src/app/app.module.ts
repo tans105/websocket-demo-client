@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ChatComponent } from './chat/chat.component'
 import { ChatService } from "./chat/chat.service";
+import { HeaderComponent } from './common/header/header.component';
+import { FooterComponent } from './common/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

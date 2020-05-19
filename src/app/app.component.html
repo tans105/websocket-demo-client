@@ -1,1 +1,15 @@
-<app-chat></app-chat>
+<app-header></app-header>
+<div *ngIf="!canTalk">
+    <div class="container">
+        <form>
+            <div class="form-group user-input">
+                <input (keydown.enter)="enableChat($event.target.value)" type="text" class="form-control"
+                       placeholder="Who are you ?">
+            </div>
+        </form>
+    </div>
+</div>
+<div *ngIf="canTalk">
+    <app-chat [user]="currentUser"></app-chat>
+</div>
+<app-footer></app-footer>
