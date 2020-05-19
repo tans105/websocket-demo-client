@@ -4,3 +4,11 @@ body {
     padding: 0 !important;
     overflow: hidden;
 }
+
+.float-right {
+    float: right;
+}
+
+.align-center {
+    text-align: center;
+}

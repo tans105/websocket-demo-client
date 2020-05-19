@@ -8,27 +8,22 @@
                             [ngClass]="{'me': msg._sender === currentUser, 'him': msg._sender !== currentUser }">
                             <span>{{msg._content}}</span>
                         </li>
-                        <li *ngIf="msg._type=='JOIN'" class="join"><span style="color: darkgrey">{{msg._sender}}
-                            joined</span></li>
-                        <li *ngIf="msg._type=='LEAVE'" class="join"><span style="color: darkgrey">{{msg._sender}}
-                            left</span></li>
+                        <li *ngIf="msg._type=='JOIN'" class="join"><span class="other">{{msg._sender}} joined</span></li>
+                        <li *ngIf="msg._type=='LEAVE'" class="join"><span class="other">{{msg._sender}} left</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-    <div style="margin-top: 10px;">
+    <div class="mt-3">
         <form>
-            <div style="display: flex">
-                <div style="flex-grow: 100;">
+            <div class="send-message">
+                <div class="user-input">
                     <input type="text" [(ngModel)]="conversation" class="form-control w-100" name="conversation"
                            (keydown.enter)="sendMessage()" id="conversation">
                 </div>
-                <div style="flex-grow: 1">
-                    <button style="float: right;" (click)="sendMessage()"
-                            class="btn btn-dark" type="button">
-                        Send
-                    </button>
+                <div class="user-send">
+                    <button (click)="sendMessage()" class="btn btn-dark float-right" type="button">Send</button>
                 </div>
             </div>
         </form>

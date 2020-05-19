@@ -45,5 +45,21 @@
     opacity: 0.6;
 }
 
+.other {
+    color: darkgrey;
+}
+
+.send-message {
+    display: flex;
+}
+
+.user-input {
+    flex-grow: 100;
+}
+
+.user-send {
+    flex-grow: 1;
+}
+
 
 
