@@ -1,27 +1,26 @@
-# Angular8SpringbootWebsocket
+### Websocket client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+An angular based client application to communicate with a websocket server. <br>
+The server should support 2 messaging endpoints 
 
-## Development server
+- /chat.sendMessage - Public messaging
+- /chat.addUser - When adding a new user
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Connection to the server gets established once users enter the details. With right listeners in place, we can capture the user joining and leaving events.
 
-## Code scaffolding
+To run this
+- clone the repo
+- Goto the repo path 
+- Dev
+    - Make sure the `api_url` is configured in the `environment.ts` file.
+    - run `ng serve`. 
+OR
+- To run from a node/express server
+    - Make sure the `api_url` is configured in the `environment.ts` file. 
+    - run `ng build --aot --prod`. 
+    - This will generate distributable directory (`dist`). Copy the `dist` & `server.js` in the same directory
+    - run `node server.js` if you want to deploy it on a server 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Screens
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ 
