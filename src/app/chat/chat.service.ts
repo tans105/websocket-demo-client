@@ -2,9 +2,10 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { ChatComponent } from "./chat.component";
 import { ChatMessage } from "./model/chat.message";
+import { environment } from "../../environments/environment";
 
 export class ChatService {
-    webSocketEndPoint: string = 'http://pure-gorge-41603.herokuapp.com/ws';
+    webSocketEndPoint: string = environment.api_url + '/ws';
     topic: string = "/topic/public";
     stompClient: any;
     appComponent: ChatComponent;
