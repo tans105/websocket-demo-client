@@ -68,3 +68,19 @@
     font-weight: 200;
     font-style: italic;
 }
+
+@media screen and ( max-height: 640px )
+{
+    .footer-display{
+        display: none;
+    }
+}
+
+@media screen and ( min-height: 640px )
+{
+    .footer-display{
+        display: block;
+    }
+}
+
+

@@ -14,10 +14,6 @@
     padding: 3px 5px 3px 5px;
 }
 
-.chatBox li span {
-    color: #000000;
-}
-
 .chatBox .me {
     font-weight: 500;
     min-height: 20px;
@@ -45,8 +41,12 @@
     opacity: 0.6;
 }
 
-.other {
+.other-content {
     color: darkgrey;
+}
+
+.chat-content {
+    color: #000000;
 }
 
 .send-message {

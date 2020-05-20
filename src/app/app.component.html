@@ -1,6 +1,6 @@
 <app-header></app-header>
-<div *ngIf="!canTalk">
-    <div class="container">
+<div class="container">
+    <div *ngIf="!canTalk">
         <form>
             <div class="form-group user-input">
                 <input (keydown.enter)="enableChat($event.target.value)" type="text" class="form-control"
@@ -8,8 +8,9 @@
             </div>
         </form>
     </div>
+
+    <div *ngIf="canTalk">
+        <app-chat [user]="currentUser"></app-chat>
+    </div>
+    <app-footer></app-footer>
 </div>
-<div *ngIf="canTalk">
-    <app-chat [user]="currentUser"></app-chat>
-</div>
-<app-footer></app-footer>

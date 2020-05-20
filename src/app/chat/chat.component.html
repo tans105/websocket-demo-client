@@ -1,15 +1,14 @@
-<div class="container">
-    <div class="row">
+ <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="col-md-12 chat-screen-box" #chatArea>
                 <div class="my-3" *ngFor="let msg of msgs">
                     <ul class="chatBox">
                         <li *ngIf="msg._type == 'CHAT'"
                             [ngClass]="{'me': msg._sender === currentUser, 'him': msg._sender !== currentUser }">
-                            <span>{{msg._content}}</span>
+                            <span class="chat-content">{{msg._content}}</span>
                         </li>
-                        <li *ngIf="msg._type=='JOIN'" class="join"><span class="other">{{msg._sender}} joined</span></li>
-                        <li *ngIf="msg._type=='LEAVE'" class="join"><span class="other">{{msg._sender}} left</span></li>
+                        <li *ngIf="msg._type=='JOIN'" class="join"><span class="other-content">{{msg._sender}} joined</span></li>
+                        <li *ngIf="msg._type=='LEAVE'" class="join"><span class="other-content">{{msg._sender}} left</span></li>
                     </ul>
                 </div>
             </div>
@@ -28,5 +27,4 @@
             </div>
         </form>
     </div>
-</div>
 
