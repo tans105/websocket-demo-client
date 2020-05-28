@@ -1,30 +1,35 @@
- <div class="row">
-        <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="col-md-12 chat-screen-box" #chatArea>
-                <div class="my-3" *ngFor="let msg of msgs">
-                    <ul class="chatBox">
-                        <li *ngIf="msg._type == 'CHAT'"
-                            [ngClass]="{'me': msg._sender === currentUser, 'him': msg._sender !== currentUser }">
-                            <span class="chat-content">{{msg._content}}</span>
-                        </li>
-                        <li *ngIf="msg._type=='JOIN'" class="join"><span class="other-content">{{msg._sender}} joined</span></li>
-                        <li *ngIf="msg._type=='LEAVE'" class="join"><span class="other-content">{{msg._sender}} left</span></li>
-                    </ul>
-                </div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="col-md-12 chat-screen-box" #chatArea>
+            <div class="my-3" *ngFor="let msg of msgs">
+                <ul class="chatBox">
+                    <li *ngIf="msg._type == 'CHAT'"
+                        [ngClass]="{'me': msg._sender === currentUser, 'him': msg._sender !== currentUser }">
+                        <div class="chat-container">
+                            <div><span class="user-info">{{msg._sender}}</span></div>
+                            <div class="chat-message-container">
+                                <span [style.order]="msg._sender === currentUser ? 2 : 1" class="chat-message">{{msg._content}}</span>
+                                <span [style.order]="msg._sender === currentUser ? 1 : 2" class="chat-time">{{msg._timestamp | date: 'hh:mm'}}</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li *ngIf="msg._type=='JOIN'" class="join"><span class="other-content">{{msg._sender + ' joined'}} </span></li>
+                    <li *ngIf="msg._type=='LEAVE'" class="join"><span class="other-content">{{msg._sender + ' left'}}</span></li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="mt-3">
-        <form>
-            <div class="send-message">
-                <div class="user-input">
-                    <input type="text" [(ngModel)]="conversation" class="form-control w-100" name="conversation"
-                           (keydown.enter)="sendMessage()" id="conversation">
-                </div>
-                <div class="user-send">
-                    <button (click)="sendMessage()" class="btn btn-dark float-right" type="button">Send</button>
-                </div>
+</div>
+<div class="mt-3">
+    <form>
+        <div class="send-message">
+            <div class="user-input">
+                <input type="text" [(ngModel)]="conversation" class="form-control w-100" name="conversation" (keydown.enter)="sendMessage()" id="conversation">
             </div>
-        </form>
-    </div>
+            <div class="user-send">
+                <button (click)="sendMessage()" class="btn btn-dark float-right" type="button">Send</button>
+            </div>
+        </div>
+    </form>
+</div>
 

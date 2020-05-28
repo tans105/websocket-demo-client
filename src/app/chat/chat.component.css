@@ -11,42 +11,49 @@
 
 .chatBox li {
     margin: 5px 0 5px 0;
-    padding: 3px 5px 3px 5px;
+    min-height: 20px;
+    clear: both;
+    opacity: 0.6;
 }
 
 .chatBox .me {
-    font-weight: 500;
-    min-height: 20px;
     float: right;
-    clear: both;
-    background-color: #34a1ef;
-    border-radius: 10px 2px 2px 10px;
-    opacity: 0.6;
 }
 
 .chatBox .join {
     font-style: italic;
-    min-height: 20px;
     text-align: center;
-    clear: both;
 }
 
 .chatBox .him {
-    font-weight: 500;
-    min-height: 20px;
     float: left;
-    clear: both;
-    background-color: #ddd;
-    border-radius: 2px 10px 10px 2px;
-    opacity: 0.6;
 }
 
 .other-content {
     color: darkgrey;
 }
 
-.chat-content {
+.me .chat-message {
+    padding: 3px 5px 3px 5px;
     color: #000000;
+    border-radius: 10px 2px 2px 10px;
+    background-color: #34a1ef;
+}
+
+.me .user-info {
+    float: right;
+    font-size: small;
+}
+
+.him .chat-message {
+    padding: 3px 5px 3px 5px;
+    color: #000000;
+    border-radius: 2px 10px 10px 2px;
+    background-color: #ddd;
+}
+
+.him .user-info {
+    float: left;
 }
 
 .send-message {
@@ -59,6 +66,22 @@
 
 .user-send {
     flex-grow: 1;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.chat-message-container {
+    display: flex;
+}
+
+.chat-time {
+    font-size: x-small;
+    position: relative;
+    top: 15px;
 }
 
 

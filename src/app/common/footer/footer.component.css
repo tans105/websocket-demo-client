@@ -69,14 +69,14 @@
     font-style: italic;
 }
 
-@media screen and ( max-height: 640px )
+@media screen and ( max-height: 600px )
 {
     .footer-display{
         display: none;
     }
 }
 
-@media screen and ( min-height: 640px )
+@media screen and ( min-height: 600px )
 {
     .footer-display{
         display: block;
