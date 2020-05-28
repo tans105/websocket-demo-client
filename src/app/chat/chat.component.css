@@ -54,6 +54,7 @@
 
 .him .user-info {
     float: left;
+    font-size: small;
 }
 
 .send-message {
